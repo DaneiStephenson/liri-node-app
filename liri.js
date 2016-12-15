@@ -73,7 +73,7 @@ else if (usercommand === 'do-what-it-says') {
 }
 // If no recognized usercommand is type
 else {
-  console.log('Inpur Incorrect. Try again');
+  console.log('Inputa  Incorrect. Try again');
  
 }
 
@@ -123,7 +123,7 @@ function omdbapi(title) {
       }
       // If movie doesn't exist then notifies user
       else {
-        console.log("Not directed yet. Interested in new career change? ");
+        console.log("Not directed yet. Interested in a new career change? ");
       }
     }
     // If error occurrs, console.log the error
@@ -137,15 +137,15 @@ function spotifySong(song) {
   console.log(song);
   spotify.search({ type: 'track', query: song }, function(err, data) {
       if ( err ) {
-          console.log('Error occurred: ' + err);
+          console.log('Broken: ' + err);
           return;
       }
     else {
       // console.log(JSON.stringify(data, null, 2));
       // console.log(data.tracks.items[0]);
       for (var i = 0; i < data.tracks.items.length; i++) {
-        for (var j = 0; j < data.tracks.items[i].artists.length; j++) {
-          console.log('Artist(s): ' + data.tracks.items[i].artists[j].name);
+        for (var t = 0; t < data.tracks.items[i].artists.length; t++) {
+          console.log('Artist(s): ' + data.tracks.items[i].artists[t].name);
         }
         console.log('Track name: ' + data.tracks.items[i].name);
         console.log('Preview: ' + data.tracks.items[i].preview_url);
