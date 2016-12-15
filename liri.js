@@ -4,10 +4,10 @@ var request = require('request');
 var spotify = require('spotify');
 var fs = require('fs');
 
-///// Variables for liri commands /////
-// Grab user's command: "node liri.js command"
-var command = process.argv[2];
-// Grab user's input after command: "node liri.js command input"
+///// Variables for liri usercommands /////
+// Grab user's usercommand: "node liri.js usercommand"
+var usercommand = process.argv[2];
+// Grab user's input after usercommand: "node liri.js usercommand input"
 var input = "";
 // For loop will grab multiple words for user input
 for (var i = 3; i < process.argv.length; i++) {
@@ -15,29 +15,29 @@ for (var i = 3; i < process.argv.length; i++) {
   input += process.argv[i] + " ";
 }
 
-///// Liri Commands /////
+///// Liri usercommands /////
 // If user types 'my-tweets', display tweets
-if (command === 'my-tweets') {
+if (usercommand === 'my-tweets') {
   tweets();
 }
 // If user types 'spotify-this-song'
-else if (command === 'spotify-this-song' && input) {
+else if (usercommand === 'spotify-this-song' && input) {
   spotifySong(input);
 }
-else if (command === 'spotify-this-song' && input === "") {
+else if (usercommand === 'spotify-this-song' && input === "") {
   spotifySong('ace of base - the sign');
 }
 // If user types 'movie-this', does an omdbapi call
 // If user types a movie name, it will display that specific movie
-else if (command === 'movie-this' && input) {
+else if (usercommand === 'movie-this' && input) {
   omdbapi(input);
 }
 // If user doesn't type a movie name, it will display the movie mr nobody
-else if (command === 'movie-this' && input === "") {
+else if (usercommand === 'movie-this' && input === "") {
   omdbapi('mr+nobody');
 }
 // If user types 'do-what-it-says'
-else if (command === 'do-what-it-says') {
+else if (usercommand === 'do-what-it-says') {
   fs.readFile('random.txt', 'utf8', function (err,data) {
   var start;
   var txtinput;
@@ -71,16 +71,10 @@ else if (command === 'do-what-it-says') {
   }
 });
 }
-// If no recognized command is type
+// If no recognized usercommand is type
 else {
-  console.log('No recognized command, please try again.');
-  console.log('You can try:');
-  console.log('node liri.js my-tweets');
-  console.log('node liri.js spotify-this-song');
-  console.log('node liri.js spotify-this-song \'artist\' or \'song\' or \'album\' or \'artist - song title\'');
-  console.log('node liri.js movie-this');
-  console.log('node liri.js movie-this \'movie title\'');
-  console.log('node liri.js do-what-it-says');
+  console.log('Inpur Incorrect. Try again');
+ 
 }
 
 // Function for twitter tweets
@@ -112,8 +106,8 @@ function tweets() {
 
 // Function for omdbapi call
 function omdbapi(title) {
-  var url = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json&tomatoes=true";
-  request(url, function (error, response, body) {
+  var ombdurl = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json&tomatoes=true";
+  request(ombdurl, function (error, response, body) {
     // If no error run code in if {}
     if (!error && response.statusCode == 200) {
       // Checks if the movie exists; if so then displays movie info
