@@ -30,9 +30,12 @@ if (commands == 'my-tweets') {
 }
 
 var request = require('request');
+
 var name = process.argv[3];
 var nobody = "http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&r=json&tomatoes=true";
 var url = "http://www.omdbapi.com/?t=" + name + "&y=&plot=short&r=json&tomatoes=true";
+var input = process.argv[2];
+if (input == 'movie-this' && name) {
 request(url, function (error, response, body) {
  if (!error && response.statusCode == 200) {
    console.log("Title: " + JSON.parse(body).Title);
@@ -59,3 +62,8 @@ request(url, function (error, response, body) {
      });
  };
 });
+
+}
+
+
+
