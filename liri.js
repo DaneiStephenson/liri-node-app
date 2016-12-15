@@ -39,7 +39,7 @@ else if (usercommand === 'movie-this' && input === "") {
 // If user types 'do-what-it-says'
 else if (usercommand === 'do-what-it-says') {
   fs.readFile('random.txt', 'utf8', function (err,data) {
-  var start;
+  var initiate;
   var txtinput;
   if (err) {
     return console.log(err);
@@ -50,9 +50,9 @@ else if (usercommand === 'do-what-it-says') {
     var rng = dataarray[Math.floor(Math.random() * (dataarray.length))]
     console.log(rng);
     if (rng.includes('spotify-this-song')) {
-      start = 'spotify-this-song'.length +1;
+      initiate = 'spotify-this-song'.length +1;
       txtinput = "";
-      for (var i = start; i < rng.length; i++) {
+      for (var i = initiate; i < rng.length; i++) {
         txtinput += rng[i];
       }
       spotifySong(txtinput);
@@ -61,9 +61,9 @@ else if (usercommand === 'do-what-it-says') {
       tweets();
     }
     else if (rng.includes('movie-this')) {
-      start = 'movie-this'.length +1;
+      initiate = 'movie-this'.length +1;
       txtinput = "";
-      for (var i = start; i < rng.length; i++) {
+      for (var i = initiate; i < rng.length; i++) {
         txtinput += rng[i];
       }
       omdbapi(txtinput);
@@ -73,7 +73,7 @@ else if (usercommand === 'do-what-it-says') {
 }
 // If no recognized usercommand is type
 else {
-  console.log('Inputa  Incorrect. Try again');
+  console.log('Input is Incorrect. Try again');
  
 }
 
@@ -135,7 +135,7 @@ function omdbapi(title) {
 
 function spotifySong(song) {
   console.log(song);
-  spotify.search({ type: 'track', query: song }, function(err, data) {
+  spotify.search({ type: 'Track', query: song }, function(err, data) {
       if ( err ) {
           console.log('Broken: ' + err);
           return;
@@ -147,7 +147,7 @@ function spotifySong(song) {
         for (var t = 0; t < data.tracks.items[i].artists.length; t++) {
           console.log('Artist(s): ' + data.tracks.items[i].artists[t].name);
         }
-        console.log('Track name: ' + data.tracks.items[i].name);
+        console.log('Track Name: ' + data.tracks.items[i].name);
         console.log('Preview: ' + data.tracks.items[i].preview_url);
         console.log('Album: ' + data.tracks.items[i].album.name);
         console.log('');
