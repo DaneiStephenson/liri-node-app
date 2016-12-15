@@ -39,7 +39,7 @@ if (input == 'movie-this' && name) {
 request(url, function (error, response, body) {
  if (!error && response.statusCode == 200) {
    console.log("Title: " + JSON.parse(body).Title);
-   console.log("Year: " + JSON.parse(body).Plot);
+   console.log("Year: " + JSON.parse(body).Year);
    console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
    console.log("Country: " + JSON.parse(body).Country);
    console.log("Plot: " + JSON.parse(body).Plot);
@@ -50,7 +50,7 @@ request(url, function (error, response, body) {
      request(nobody, function(error, response,body){
          if (!error && response.statusCode == 200) {
    console.log("Title: " + JSON.parse(body).Title);
-   console.log("Year: " + JSON.parse(body).Plot);
+   console.log("Year: " + JSON.parse(body).Year);
    console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
    console.log("Country: " + JSON.parse(body).Country);
    console.log("Plot: " + JSON.parse(body).Plot);
