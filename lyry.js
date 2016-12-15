@@ -1,4 +1,4 @@
-//// NDM Requires /////
+///// NDM Requires /////
 var Twitter = require('twitter');
 var request = require('request');
 var spotify = require('spotify');
@@ -95,7 +95,7 @@ function tweets() {
 	  access_token_secret: twitterjs.twitterKeys.access_token_secret,
 	});
 
-	var params = {screen_name: 'Test_CodingCamp'};
+	var params = {screen_name: 'vincelephant'};
 	twitterclient.get('statuses/user_timeline', params, function(error, tweets, response) {
 		// If there is no error go through tweets array and return all tweets in text form (limited to 20)
 	 	if (!error) {
